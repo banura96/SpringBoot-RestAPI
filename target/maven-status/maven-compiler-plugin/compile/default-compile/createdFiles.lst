@@ -1,0 +1,5 @@
+com\spRestAPI\model\Employee.class
+com\spRestAPI\repository\EmployeeRepository.class
+com\spRestAPI\controller\EmployeeController.class
+com\spRestAPI\EmployeeApplication.class
+com\spRestAPI\dao\EmployeeDAO.class
