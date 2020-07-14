@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col m6">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+<h1 class="display-5">Employee Register</h1>
+<form #form="ngForm"  (ngSubmit)="onSubmit(form)">
+  <input type="hidden" name="id" #_id="ngModel" [(ngModel)]="empservice.selectedEmployee.id" >
+  <div class="form-group">
+    <input name="name" #name="ngModel" [(ngModel)]="empservice.selectedEmployee.name" class="form-control" placeholder="Enter your name" required>
+    <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required.</div>
+  </div>
+
+  <div class="form-group">
+    <input name="position" #position="ngModel" [(ngModel)]="empservice.selectedEmployee.position" class="form-control" placeholder="position" required>
+    <div *ngIf="position.invalid && position.touched" class="validation-error">This field is required.</div>
+  </div>
+
+  <div class="form-group">
+    <input name="office" #office="ngModel" [(ngModel)]="empservice.selectedEmployee.office" class="form-control" placeholder="were your office" required>
+    <div *ngIf="office.invalid && office.touched" class="validation-error">This field is required.</div>
+  </div>
+
+  <div class="form-group">
+    <input name="salary" #salary="ngModel" [(ngModel)]="empservice.selectedEmployee.salary" class="form-control" placeholder="salary" required>
+    <div *ngIf="salary.invalid && salary.touched" class="validation-error">This field is required.</div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-black btn-info">Register</button>
+    <button  type="button" class="btn btn-lg btn-black btn-info" (click)="resetForm(form)">Reset</button>
+  </div>
+</form>
+
+</div>
+
+</div>
+  </div>
+  <div class="col m6">
+    <table class="responsive-table highlight ">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>position</th>
+          <th>office</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let emp of empservice.employees">
+        <td>{{emp.name}}</td>
+        <td>{{emp.position}}</td>
+        <td>{{emp.office}}</td>
+         <td>
+           <a class="waves-effect waves-light btn" (click)="onEdit(emp)">
+             <i class="material-icons">edit</i>
+           </a>
+           <a class="waves-effect waves-light btn" (click)="onDelete(emp.id,form)">
+            <i class="material-icons">delete</i>
+          </a>
+         </td> </tr>
+    </table>
+  </div>
+</div>
+
